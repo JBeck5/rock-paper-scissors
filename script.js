@@ -2,13 +2,25 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playGame() {
-    for (let i = 1; i <= 5; i++) {
-        console.log("Round: " + i);
+    let gameEnd = false;
+    let round = 1;
+    while (gameEnd != true) {
+        console.log("Round: " + round);
         let humanSelection = getHumanChoice();
         let computerSelection = getComputerChoice();
         playRound(humanSelection, computerSelection);
         console.log("Player: " + humanScore + " || CPU: " + computerScore + "\n\n");
+        round ++;
+
+        if (humanScore === 5 || computerScore === 5) {
+            gameEnd = true;
+        }
     }
+
+    if (humanScore === 5) {
+        console.log("Game End:");
+        console.log("You Win!");
+    } else console.log("You Lost.");
 }
 
 function playRound(humanChoice, computerChoice) {
