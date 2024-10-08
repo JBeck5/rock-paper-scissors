@@ -89,5 +89,3 @@ function getComputerChoice() {
         return "scissors";
     }
 }
-
-playGame();

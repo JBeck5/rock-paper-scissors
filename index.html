@@ -3,10 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <h1>Rock Paper Scissors</h1>
+    <span class="discription">Best of 5 games wins.</span>
+
+    <div class="mainDisplay">
+        <div class="playerDisplay">
+            <span class="titleDisplay">Player</span>
+            <div class="playerSelection"></div>
+        </div>
+        <div class="scoreDisplay">
+            <span class="titleDisplay">Score</span>
+            <div class="resultDisplay"><span class="playerScore"> 0 </span><span> : </span><span class="computerScore"> 0 </span></div>
+        </div>
+        <div class="computerDisplay">
+            <span class="titleDisplay">Computer</span>
+            <div class="computerSelection"></div>
+        </div>
+    </div>
     
+    <div class="nextMove">
+        <span class="next">Select one to start the round.</span>
+        <span class="gameEnd"></span>
+        <button class="reset" onclick-"resetGame()">Play Again?</button>
+    </div>
+
+    <h2>Your Selections:</h2>
+    <div class="playerSelection">
+        <button type="button" class="rBtn" id="rock">
+            <img src="./images/rock.png" alt="rockHand"></button>
+        <button type="button" class="pBtn" id="paper">
+            <img src="./images/paper.png" alt="paperHand"></button>
+        <button type="button" class="sBtn" id="scissors">
+            <img src="./images/scissors.png" alt="scissorsHand"></button>
+    </div>
+        
+    </div>
 </body>
 </html>
