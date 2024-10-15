@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>Rock Paper Scissors</title>
 </head>
 <body>
@@ -14,15 +14,15 @@
     <div class="mainDisplay">
         <div class="playerDisplay">
             <span class="titleDisplay">Player</span>
-            <div class="playerSelection"></div>
+            <div id="playerSelection"><img src="./images/rock-paper-scissors.png"></div>
         </div>
         <div class="scoreDisplay">
             <span class="titleDisplay">Score</span>
-            <div class="resultDisplay"><span class="playerScore"> 0 </span><span> : </span><span class="computerScore"> 0 </span></div>
+            <div class="resultDisplay"><span id="playerScore"> 0 </span><span> : </span><span id="computerScore"> 0 </span></div>
         </div>
         <div class="computerDisplay">
             <span class="titleDisplay">Computer</span>
-            <div class="computerSelection"></div>
+            <div id="computerSelection"><img src="./images/rock-paper-scissors.png"></div>
         </div>
     </div>
     
@@ -33,15 +33,13 @@
     </div>
 
     <h2>Your Selections:</h2>
-    <div class="playerSelection">
-        <button type="button" class="rBtn" id="rock">
+    <div class="playerChoices">
+        <button type="button" class="pBtn" id="rock">
             <img src="./images/rock.png" alt="rockHand"></button>
         <button type="button" class="pBtn" id="paper">
             <img src="./images/paper.png" alt="paperHand"></button>
-        <button type="button" class="sBtn" id="scissors">
+        <button type="button" class="pBtn" id="scissors">
             <img src="./images/scissors.png" alt="scissorsHand"></button>
-    </div>
-        
     </div>
 </body>
 </html>

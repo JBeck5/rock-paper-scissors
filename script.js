@@ -1,30 +1,20 @@
+"use strict";
+
+let pSelection = document.querySelector("#playerSelection img");
+let cSelection = document.querySelector("#computerSelection img");
+let pScore = document.querySelector("#playerScore");
+let cScore = document.querySelector("#computerScore");
+let playBtn = document.querySelectorAll('.pBtn');
+
+playBtn.forEach((btn) => btn.addEventListener("click", playGame));
+
 let humanScore = 0;
 let computerScore = 0;
 
-function playGame() {
-    let gameEnd = false;
-    let round = 1;
-    while (gameEnd != true) {
-        console.log("Round: " + round);
-        let humanSelection = getHumanChoice();
-        let computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-        console.log("Player: " + humanScore + " || CPU: " + computerScore + "\n\n");
-        round ++;
-
-        if (humanScore === 5 || computerScore === 5) {
-            gameEnd = true;
-        }
-    }
-
-    if (humanScore === 5) {
-        console.log("Game End:");
-        console.log("You Win!");
-    } else console.log("You Lost.");
-}
-
 function playRound(humanChoice, computerChoice) {
-    console.log("Player: " + humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1));
+    let playerPoint = 0;
+    let computerPoint = 0;
+    
     switch(humanChoice) {
         case "rock":
             if (computerChoice === "rock") {
@@ -33,13 +23,14 @@ function playRound(humanChoice, computerChoice) {
             } else if (computerChoice === "paper") {
                 console.log("CPU: Paper");
                 console.log("CPU Wins!");
-                computerScore ++;
+                computerPoint ++;
             } else if (computerChoice === "scissors") {
                 console.log("CPU: Scissors");
                 console.log("You Win!");
-                humanScore ++;
+                playerPoint ++;
             }
-            break;
+            return ["somethingsomething", playerPoint, computerPoint];
+
         case "paper":
             if (computerChoice === "paper") {
                 console.log("CPU: Paper");
@@ -47,13 +38,14 @@ function playRound(humanChoice, computerChoice) {
             } else if (computerChoice === "scissors") {
                 console.log("CPU: Scissors");
                 console.log("CPU Wins!");
-                computerScore ++;
+                computerPoint ++;
             } else if (computerChoice === "rock") {
                 console.log("CPU: Rock");
                 console.log("You Win!");
-                humanScore ++;
+                playerPoint ++;
             }
-            break;
+            return ["somethingsomething", playerPoint, computerPoint];
+
         case "scissors":
             if (computerChoice === "scissors") {
                 console.log("CPU: Scissors");
@@ -61,21 +53,26 @@ function playRound(humanChoice, computerChoice) {
             } else if (computerChoice === "rock") {
                 console.log("CPU: Rock");
                 console.log("CPU Wins!");
-                computerScore ++;
+                computerPoint ++;
             } else if (computerChoice === "paper") {
                 console.log("CPU: Paper");
                 console.log("You Win!");
-                humanScore ++;
+                playerPoint ++;
             }
-            break;
+            return ["somethingsomething", playerPoint, computerPoint];
     }
 }
 
-function getHumanChoice() {
-    let response = prompt("Select (Rock), (Paper), or (Scissors)").toLowerCase();
-    if (response === "rock" || response === "paper" || response === "scissors") {
-        return response;
-    } else return getHumanChoice();
+function updateGame(player, computer, result) {
+    let playerScore = parseInt(pScore.textContent);
+    let computerScore = parseInt(cScore.textContent);
+
+    if(playerScore < 5 && computerScore < 5) {
+        pScore.textContent = playerScore += result[1];
+        cScore.textContent = computerScore += result[2];
+        pSelection.src = `images/${player}.png`;
+        cSelection.src = `images/${computer}.png`;
+    }
 }
 
 function getComputerChoice() {
@@ -88,4 +85,11 @@ function getComputerChoice() {
     } else if (num === 2) {
         return "scissors";
     }
+}
+
+function playGame() {
+    let playerSelection = `${this.id}`;
+    let computerSelection = getComputerChoice();
+    let outcome = playRound(playerSelection, computerSelection);
+    updateGame(playerSelection, computerSelection, outcome);
 }
