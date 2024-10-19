@@ -76,15 +76,10 @@ function updateGame(player, computer, result) {
 }
 
 function getComputerChoice() {
-    const num = Math.floor(Math.random() * 3);
+    const options = ["rock", "paper", "scissors"];
+    const num = Math.floor(Math.random() * options.length);
 
-    if (num === 0) {
-        return "rock";
-    } else if (num === 1) {
-        return "paper";
-    } else if (num === 2) {
-        return "scissors";
-    }
+    return options[num];
 }
 
 function playGame() {
